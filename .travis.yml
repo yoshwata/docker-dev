@@ -11,7 +11,7 @@ branches:
     - master
     - test
 before_script:
-  - sudo pip install pytest flake8
+  - sudo python3 -m pip install pytest flake8
   - flake8
   - pytest test_builder.py
   - docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD"
