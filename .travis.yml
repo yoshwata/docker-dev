@@ -9,6 +9,7 @@ services:
 branches:
   only:
     - master
+    - test
 before_script:
   - sudo pip install pytest flake8
   - flake8
