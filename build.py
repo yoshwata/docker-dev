@@ -42,7 +42,6 @@ db_images = [
     {'name': 'mongo-dev', 'tag': '4.1', 'args': {'BASE_TAG': '4.1'}}
 ]
 
-
 images = [*language_images, *db_images]
 
 def expand_images_config(images):
