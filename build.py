@@ -14,32 +14,10 @@ import os
 language_images = [
     {'name': 'ubuntu-dev-base', 'tag': 'bionic',
         'args': {'UBUNTU_RELEASE': 'bionic'}},
-    {'name': 'power-tmux', 'tag': 'bionic', 'args': {'BASE_TAG': 'bionic'}},
-    {'name': 'ruby-dev', 'tag': 'bionic'},
-    {'name': 'nvim', 'tag': 'bionic', 'args': {'BASE_TAG': 'bionic'}},
-    {'name': 'py-dev', 'tag': 'bionic', 'args': {'BASE_TAG': 'bionic'}},
-    {'name': 'rust-dev-base', 'path': 'rust-dev/base'},
-    {'name': 'rust-dev', 'tag': 'bionic-stable', 'path': 'rust-dev/stable'},
-    {'name': 'rust-dev', 'tag': 'bionic-nightly', 'path': 'rust-dev/nightly'},
-    {'name': 'java-dev', 'tag': 'bionic'},
-    {'name': 'nodejs-dev-base', 'path': 'nodejs-dev/base', 'tag': 'bionic',
-        'args': {'BASE_TAG': 'bionic'}},
-    {'name': 'nodejs-dev', 'tag': 'bionic-carbon',
-        'path': 'nodejs-dev/carbon', 'args': {'BASE_TAG': 'bionic'}},
-    {'name': 'nodejs-dev', 'tag': 'bionic-dubnium',
-        'path': 'nodejs-dev/dubnium', 'args': {'BASE_TAG': 'bionic'}},
-    {'name': 'c-dev', 'tag': 'bionic'},
-    {'name': 'devops', 'tag': 'bionic'}
 ]
 
 db_images = [
     {'name': 'my-dev', 'tag': '5.6'},
-    {'name': 'my-dev', 'tag': '5.7', 'args': {'MYSQL_VERSION': '5.7'}},
-    {'name': 'my-dev', 'tag': '8.0', 'args': {'MYSQL_VERSION': '8.0'}},
-    {'name': 'pg-dev', 'tag': '9.6', 'args': {'PG_VERSION': '9.6'}},
-    {'name': 'pg-dev', 'tag': '10', 'args': {'PG_VERSION': '10'}},
-    {'name': 'pg-dev', 'tag': '11', 'args': {'PG_VERSION': '11'}},
-    {'name': 'mongo-dev', 'tag': '4.1', 'args': {'BASE_TAG': '4.1'}}
 ]
 
 images = [*language_images, *db_images]
