@@ -16,4 +16,4 @@ before_script:
   - flake8 --version
   # - pytest test_builder.py
   - docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD"
-script: python3 build.py $TRAVIS_COMMIT
+script: python3 build.py $TRAVIS_COMMIT yoshwata
