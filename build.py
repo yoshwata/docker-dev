@@ -22,14 +22,14 @@ db_images = [
 
 images = [*language_images, *db_images]
 
-def expand_images_config(images):
+def expand_images_config(images, username):
     for image in images:
         if 'path' not in image:
             image['path'] = image['name']
         if 'tag' not in image:
             image['tag'] = 'latest'
         image['dependency'] = parse_image_dependency(image)
-        image['full_name'] = 'aghost7/' + image['name'] + ':' + image['tag']
+        image['full_name'] = username + '/' + image['name'] + ':' + image['tag']
 
 
 def parse_image_dependency(image):
@@ -205,7 +205,7 @@ def print_plan(plan):
 
 
 if __name__ == "__main__":
-    expand_images_config(images)
+    expand_images_config(images, sys.argv[2])
     changes = changed_images(images, sys.argv[1])
     plan = build_plan(images, changes)
     print_plan(plan)
