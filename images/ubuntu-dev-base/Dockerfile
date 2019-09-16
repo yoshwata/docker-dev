@@ -1,16 +1,18 @@
 ARG UBUNTU_RELEASE=bionic
+ARG USER=yoshwata
 
 FROM ubuntu:${UBUNTU_RELEASE}
 
 ARG UBUNTU_RELEASE
 
 ENV UBUNTU_RELEASE=${UBUNTU_RELEASE}
+ENV USER=${USER}
 
 #  TODO: user name should be customisable?
 RUN apt-get update && \
 	apt-get install sudo -y && \
-	adduser --disabled-password --gecos '' aghost-7 && \
-	adduser aghost-7 sudo && \
+	adduser --disabled-password --gecos '' ${USER} && \
+	adduser ${USER} sudo && \
 	echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
 	apt-get autoremove -y && \
 	apt-get clean && \
@@ -39,13 +41,13 @@ RUN bash /tmp/build.sh && \
 	rm /tmp/build.sh
 
 # For some reason, this environment variable isn't set by docker.
-ENV USER aghost-7
+ENV USER $USER
 
-ENV HOME /home/aghost-7
+ENV HOME /home/${USER}
 
-WORKDIR /home/aghost-7
+WORKDIR /home/${USER}
 
-USER aghost-7
+USER ${USER}
 
 COPY ./inputrc "$HOME/.inputrc"
 
