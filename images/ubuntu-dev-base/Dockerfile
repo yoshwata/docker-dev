@@ -6,7 +6,7 @@ ARG UBUNTU_RELEASE
 
 ENV UBUNTU_RELEASE=${UBUNTU_RELEASE}
 
-# TODO: user name should be customisable?
+#  TODO: user name should be customisable?
 RUN apt-get update && \
 	apt-get install sudo -y && \
 	adduser --disabled-password --gecos '' aghost-7 && \
