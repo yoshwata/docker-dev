@@ -9,7 +9,8 @@ ENV UBUNTU_RELEASE=${UBUNTU_RELEASE}
 ENV USER=${USER}
 
 #  TODO: user name should be customisable?
-RUN apt-get update && \
+RUN echo ${USER} && \
+	apt-get update && \
 	apt-get install sudo -y && \
 	adduser --disabled-password --gecos '' ${USER} && \
 	adduser ${USER} sudo && \
