@@ -41,7 +41,8 @@ apt-get remove -y debsums
 
 # Add proper docker group to our user
 groupadd -g 999 docker
-usermod -aG docker aghost-7
+user=$1
+usermod -aG docker $user
 
 pip3 install docker-compose
 

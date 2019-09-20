@@ -37,7 +37,7 @@ ENV DOCKER_CLI_VERSION "18.09.3"
 
 COPY build.sh /tmp/build.sh
 
-RUN bash /tmp/build.sh && \
+RUN bash /tmp/build.sh ${USER} && \
 	rm /tmp/build.sh
 
 # For some reason, this environment variable isn't set by docker.
