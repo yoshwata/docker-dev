@@ -1,8 +1,9 @@
 ARG BASE_TAG=bionic
+ARG USER=yoshwata
 
-FROM aghost7/ubuntu-dev-base:$BASE_TAG
+FROM ${USER}/ubuntu-dev-base:$BASE_TAG
 
-USER aghost-7
+USER ${USER}
 
 ENV XDG_CONFIG_HOME "$HOME/.config"
 
@@ -18,7 +19,7 @@ ENV TMUX_VERSION 2.7
 
 COPY ./build.sh /tmp/build.sh
 
-RUN bash /tmp/build.sh && \
+RUN bash /tmp/build.sh $USER && \
 	sudo rm /tmp/build.sh
 
 CMD ["bin/bash"]

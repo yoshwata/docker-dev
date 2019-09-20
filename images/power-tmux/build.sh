@@ -52,8 +52,8 @@ install-tmate() {
 sudo apt-get update
 
 # Fix file permissions from the copy
-sudo chown -R aghost-7:aghost-7 "$HOME/.config"
-sudo chown aghost-7:aghost-7 /home/aghost-7/.tmux.conf
+sudo chown -R $USER:$USER "$HOME/.config"
+sudo chown $USER:$USER /home/$USER/.tmux.conf
 sudo chown $USER:$USER ~/.tmate.conf
 
 # Need to update package cache...

@@ -14,13 +14,10 @@ import os
 language_images = [
     {'name': 'ubuntu-dev-base', 'tag': 'bionic',
         'args': {'UBUNTU_RELEASE': 'bionic'}},
+    {'name': 'power-tmux', 'tag': 'bionic', 'args': {'BASE_TAG': 'bionic'}},
 ]
 
-db_images = [
-    {'name': 'my-dev', 'tag': '5.6'},
-]
-
-images = [*language_images, *db_images]
+images = [*language_images]
 
 def expand_images_config(images, username):
     for image in images:
