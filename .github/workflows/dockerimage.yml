@@ -12,6 +12,7 @@ jobs:
       with:
         name: yoshwata/ubuntu-dev-base
         dockerfile: images/ubuntu-dev-base/Dockerfile
+        workdir: images/ubuntu-dev-base/Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         snapshot: true
