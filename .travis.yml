@@ -9,11 +9,9 @@ services:
 branches:
   only:
     - master
-    - test
 before_script:
-  - sudo apt-get install python3-pip
-  - sudo python3 -m pip install pytest flake8
-  - flake8 --version
-  # - pytest test_builder.py
+  - sudo pip install pytest flake8
+  - flake8
+  - pytest test_builder.py
   - docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD"
-script: python3 build.py $TRAVIS_COMMIT yoshwata
+script: python3 build.py $TRAVIS_COMMIT
