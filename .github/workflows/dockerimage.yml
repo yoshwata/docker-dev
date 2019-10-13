@@ -7,11 +7,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Publish to Registry
+    - name: Publish ubuntu-dev-base
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
         name: yoshwata/ubuntu-dev-base
         workdir: images/ubuntu-dev-base
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        snapshot: true
+    - name: Publish power-tmux
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: yoshwata/power-tmux
+        workdir: images/power-tmux
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         snapshot: true
