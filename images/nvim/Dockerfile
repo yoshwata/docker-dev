@@ -1,8 +1,9 @@
 ARG BASE_TAG=bionic
+ARG USER=yoshwata
 
-FROM aghost7/power-tmux:$BASE_TAG
+FROM ${USER}/power-tmux:$BASE_TAG
 
-USER aghost-7
+USER ${USER}
 
 COPY ./build.sh /tmp/build.sh
 
@@ -14,7 +15,7 @@ COPY post-plugin.vim "$HOME/.config/nvim/post-plugin.vim"
 
 COPY ./ycm-install /usr/local/bin/ycm-install
 
-RUN /tmp/build.sh && \
+RUN /tmp/build.sh ${USER} && \
 	sudo rm /tmp/build.sh
 
 CMD ["bin/bash"]
