@@ -1,10 +1,11 @@
 # vim: set ft=dockerfile
 
 ARG BASE_TAG=bionic
+ARG USER=yoshwata
 
-FROM aghost7/nvim:$BASE_TAG
+FROM ${USER}/nvim:$BASE_TAG
 
-USER aghost-7
+USER ${USER}
 
 COPY ./bashrc-additions.sh /tmp/bashrc-additions.sh
 

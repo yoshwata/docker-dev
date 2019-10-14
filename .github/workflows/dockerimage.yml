@@ -34,3 +34,12 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         snapshot: true
         cache: true
+    - name: Publish nodejs
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: yoshwata/nodejs-dev
+        workdir: images/nodejs-dev
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        snapshot: true
+        cache: true
