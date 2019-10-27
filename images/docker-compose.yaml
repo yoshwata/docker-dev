@@ -1,0 +1,22 @@
+version: '3'
+services:
+  power-tmux:
+    build: ./nvim
+    image: power-tmux-local:latest
+    command: tmux new
+    volumes:
+      - .:/work
+      - /Users/yoshwata/git/githubcom/yoshwata/docker-dev-settings/.tmux.conf:/home/yoshwata/.tmux.conf
+    working_dir: /work
+  nvim:
+    build: ./nvim
+    image: yoshwata/nvim:bionic
+    command: tmux new
+    volumes:
+      - .:/work
+      - /Users/yoshwata/git/githubcom/yoshwata/docker-dev-settings/.tmux.conf:/home/yoshwata/.tmux.conf
+      - /Users/yoshwata/git/githubcom/yoshwata/docker-dev-settings/.bash_history:/home/yoshwata/.bash_history
+      - /Users/yoshwata/git/githubcom/yoshwata/docker-dev-settings/.bash_profile:/home/yoshwata/.bash_profile
+      - /Users/yoshwata/git/githubcom/yoshwata/docker-dev-settings/.path:/home/yoshwata/.path
+      - /Users/yoshwata/git/githubcom/yoshwata/docker-dev-settings/.bash_prompt:/home/yoshwata/.bash_prompt
+    working_dir: /work
