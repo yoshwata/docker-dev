@@ -19,4 +19,8 @@ services:
       - /Users/yoshwata/git/githubcom/yoshwata/docker-dev-settings/.bash_profile:/home/yoshwata/.bash_profile
       - /Users/yoshwata/git/githubcom/yoshwata/docker-dev-settings/.path:/home/yoshwata/.path
       - /Users/yoshwata/git/githubcom/yoshwata/docker-dev-settings/.bash_prompt:/home/yoshwata/.bash_prompt
+      - /Users/yoshwata/git/githubcom/yoshwata/docker-dev-settings/.exports:/home/yoshwata/.exports
+      - /Users/yoshwata/git/githubcom/yoshwata/docker-dev-settings/.aliases:/home/yoshwata/.aliases
+      - /Users/yoshwata/git/githubcom/yoshwata/docker-dev-settings/.functions:/home/yoshwata/.functions
+      - /Users/yoshwata/git/githubcom/yoshwata/docker-dev-settings/.extra:/home/yoshwata/.extra
     working_dir: /work
