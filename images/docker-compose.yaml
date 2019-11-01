@@ -1,19 +1,11 @@
 version: '3'
 services:
-  power-tmux:
-    build: ./nvim
-    image: power-tmux-local:latest
+  ubuntu-dev-base:
+    build: ./ubuntu-dev-base
+    image: yoshwata/ubuntu-dev-base:bionic
     command: tmux new
-    volumes:
-      - .:/work
-      - /Users/yoshwata/git/githubcom/yoshwata/docker-dev-settings/.tmux.conf:/home/yoshwata/.tmux.conf
-    working_dir: /work
-  nvim:
-    build: ./nvim
-    image: yoshwata/nvim:bionic
-    command: tmux new
-    volumes:
-      - .:/work
+    volumes: &vol
+      - $PWD:/work
       - /Users/yoshwata/git/githubcom/yoshwata/docker-dev-settings/.tmux.conf:/home/yoshwata/.tmux.conf
       - /Users/yoshwata/git/githubcom/yoshwata/docker-dev-settings/.bash_history:/home/yoshwata/.bash_history
       - /Users/yoshwata/git/githubcom/yoshwata/docker-dev-settings/.bash_profile:/home/yoshwata/.bash_profile
@@ -22,5 +14,18 @@ services:
       - /Users/yoshwata/git/githubcom/yoshwata/docker-dev-settings/.exports:/home/yoshwata/.exports
       - /Users/yoshwata/git/githubcom/yoshwata/docker-dev-settings/.aliases:/home/yoshwata/.aliases
       - /Users/yoshwata/git/githubcom/yoshwata/docker-dev-settings/.functions:/home/yoshwata/.functions
+      - /Users/yoshwata/git/githubcom/yoshwata/docker-dev-settings/.gitconfig.sh:/home/yoshwata/.gitconfig.sh
       - /Users/yoshwata/git/githubcom/yoshwata/docker-dev-settings/.extra:/home/yoshwata/.extra
+    working_dir: /work
+  power-tmux:
+    build: ./power-tmux
+    image: yoshwata/power-tmux:bionic
+    command: tmux new
+    volumes: *vol
+    working_dir: /work
+  nvim:
+    build: ./nvim
+    image: yoshwata/nvim:bionic
+    command: tmux new
+    volumes: *vol
     working_dir: /work
