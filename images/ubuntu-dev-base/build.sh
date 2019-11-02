@@ -56,6 +56,11 @@ curl --create-dirs -L \
 	https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose \
 	-o /etc/bash_completion.d/docker-compose
 
+# Add kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+
 # Man pages on base debian image aren't installed...
 apt-install man-db
 
