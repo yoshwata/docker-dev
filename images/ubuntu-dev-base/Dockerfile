@@ -53,4 +53,12 @@ COPY ./inputrc "$HOME/.inputrc"
 
 RUN sudo chown "$USER":"$USER" "$HOME/.inputrc"
 
+COPY user-setting.sh /usr/local/bin/user-setting.sh
+RUN sudo chmod +x /usr/local/bin/user-setting.sh
+
+ARG UID=1000
+ARG GROUP=yoshwata
+ARG GID=1000
+RUN /usr/local/bin/user-setting.sh
+
 CMD ["/bin/bash"]
