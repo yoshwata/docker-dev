@@ -115,9 +115,6 @@ apt-install gpg gpg-agent
 # replacement for ifconfig
 apt-install iproute2
 
-# replacement for su
-apt-install gosu
-
 # Expose local servers to the internet. Useful for testing webhooks, oauth,
 # etc.
 curl -o /tmp/ngrok.zip \
