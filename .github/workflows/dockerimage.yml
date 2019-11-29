@@ -14,8 +14,8 @@ jobs:
         workdir: images/ubuntu-dev-base
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        snapshot: true
-        cache: true
+        snapshot: "true"
+        cache: "true"
     - name: Publish power-tmux
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
@@ -23,8 +23,8 @@ jobs:
         workdir: images/power-tmux
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        snapshot: true
-        cache: true
+        snapshot: "true"
+        cache: "true"
     - name: Publish nvim
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
@@ -32,8 +32,8 @@ jobs:
         workdir: images/nvim
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        snapshot: true
-        cache: true
+        snapshot: "true"
+        cache: "true"
     - name: Publish nodejs base
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
@@ -41,14 +41,14 @@ jobs:
         workdir: images/nodejs-dev/base
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        snapshot: true
-        cache: true
-    - name: Publish nodejs 8
+        snapshot: "true"
+        cache: "true"
+    - name: Publish nodejs 10
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: yoshwata/nodejs-dev-8
-        workdir: images/nodejs-dev/carbon
+        name: yoshwata/nodejs-dev-10
+        workdir: images/nodejs-dev/debnium
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        snapshot: true
-        cache: true
+        snapshot: "true"
+        cache: "true"
