@@ -1,3 +1,4 @@
 ARG BASE_TAG=bionic
+ARG USER=yoshwata
 
-FROM aghost7/nodejs-dev-base:$BASE_TAG
+FROM ${USER}/nodejs-dev-base:$BASE_TAG
