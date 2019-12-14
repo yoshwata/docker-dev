@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+function share_history {
+    history -a
+    history -c
+    history -r
+}
+# PROMPT_COMMAND='share_history'
+PROMPT_COMMAND="share_history; $PROMPT_COMMAND"
+# Disable histappend because this prompt appends everytime
+shopt -u histappend
+
+# kube-ps1
+# source ~/bin/kube-ps1.sh
+# PS1='$(kube_ps1)'$PS1
+# kubeoff
