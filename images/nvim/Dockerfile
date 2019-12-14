@@ -1,7 +1,8 @@
 ARG BASE_TAG=bionic
 ARG USER=yoshwata
+ARG FROM_IMG=power-tmux
 
-FROM ${USER}/power-tmux:$BASE_TAG
+FROM ${USER}/${FROM_IMG}:$BASE_TAG
 
 USER ${USER}
 

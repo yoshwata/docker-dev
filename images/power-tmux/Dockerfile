@@ -1,7 +1,9 @@
 ARG BASE_TAG=bionic
 ARG USER=yoshwata
+ARG FROM_IMG=ubuntu-dev-base
 
-FROM ${USER}/ubuntu-dev-base:$BASE_TAG
+# FROM ${USER}/ubuntu-dev-base:$BASE_TAG
+FROM ${USER}/${FROM_IMG}:$BASE_TAG
 
 USER ${USER}
 
