@@ -1,0 +1,55 @@
+version: '3'
+services:
+  ubuntu-dev-base-local:
+    image: yoshwata/ubuntu-dev-base-local:bionic
+    command: /bin/bash
+    build:
+      context: ../images/ubuntu-dev-base/
+      args:
+        USER: "yoshwata"
+        UID: 1000
+        GROUP: "users"
+        GID: 1000
+    volumes: &vol
+      - /home/yoshwata:/work
+      - ./.tmux.conf:/home/yoshwata/.tmux.conf
+      - ./.bash_history:/home/yoshwata/.bash_history
+      - ./.bash_profile:/home/yoshwata/.bash_profile
+      - ./.path:/home/yoshwata/.path
+      - ./.bash_prompt:/home/yoshwata/.bash_prompt
+      - ./.exports:/home/yoshwata/.exports
+      - ./.aliases:/home/yoshwata/.aliases
+      - ./.functions:/home/yoshwata/.functions
+      - ./.gitconfig.sh:/home/yoshwata/.gitconfig.sh
+      # secret settings
+      - ./.extra:/home/yoshwata/.extra
+      - ./.kube:/home/yoshwata/.kube
+    working_dir: /work
+  power-tmux-local:
+    build:
+      context: ../images/power-tmux
+      args:
+        FROM_IMG: ubuntu-dev-base-local
+    image: yoshwata/power-tmux-local:bionic
+    command: tmux new
+    volumes: *vol
+    working_dir: /work
+  nvim-local:
+    build:
+      context: ../images/nvim
+      args:
+        FROM_IMG: power-tmux-local
+    image: yoshwata/nvim-local:bionic
+    command: tmux new
+    volumes: *vol
+    working_dir: /work
+  nodejs-local:
+    build:
+      context: ../images/nodejs-dev/dubnium
+      args:
+        FROM_IMG: nvim-local
+    image: yoshwata/nodejs-dev-10-local:bionic
+    command: tmux new
+    volumes: *vol
+    working_dir: /work
+
