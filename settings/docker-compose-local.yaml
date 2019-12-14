@@ -4,7 +4,7 @@ services:
     image: yoshwata/ubuntu-dev-base-local:bionic
     command: /bin/bash
     build:
-      context: /home/yoshwata/git/githubcom/yoshwata/docker-dev/images/ubuntu-dev-base/
+      context: ../images/ubuntu-dev-base/
       args:
         USER: "yoshwata"
         UID: 1000
@@ -27,7 +27,7 @@ services:
     working_dir: /work
   power-tmux-local:
     build:
-      context: /home/yoshwata/git/githubcom/yoshwata/docker-dev/images/power-tmux
+      context: ../images/power-tmux
       args:
         FROM_IMG: ubuntu-dev-base-local
     image: yoshwata/power-tmux-local:bionic
@@ -36,7 +36,7 @@ services:
     working_dir: /work
   nvim-local:
     build:
-      context: /home/yoshwata/git/githubcom/yoshwata/docker-dev/images/nvim
+      context: ../images/nvim
       args:
         FROM_IMG: power-tmux-local
     image: yoshwata/nvim-local:bionic
@@ -45,7 +45,7 @@ services:
     working_dir: /work
   nodejs-local:
     build:
-      context: /home/yoshwata/git/githubcom/yoshwata/docker-dev/images/nodejs-dev/dubnium
+      context: ../images/nodejs-dev/dubnium
       args:
         FROM_IMG: nvim-local
     image: yoshwata/nodejs-dev-10-local:bionic
