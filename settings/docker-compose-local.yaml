@@ -11,7 +11,7 @@ services:
         GROUP: "users"
         GID: 1000
     volumes: &vol
-      - .:/work
+      - /home/yoshwata:/work
       - ./.tmux.conf:/home/yoshwata/.tmux.conf
       - ./.bash_history:/home/yoshwata/.bash_history
       - ./.bash_profile:/home/yoshwata/.bash_profile
@@ -45,10 +45,11 @@ services:
     working_dir: /work
   nodejs-local:
     build:
-      context: /home/yoshwata/git/githubcom/yoshwata/docker-dev/images/nodejs-dev
+      context: /home/yoshwata/git/githubcom/yoshwata/docker-dev/images/nodejs-dev/dubnium
       args:
         FROM_IMG: nvim-local
     image: yoshwata/nodejs-dev-10-local:bionic
     command: tmux new
     volumes: *vol
     working_dir: /work
+
