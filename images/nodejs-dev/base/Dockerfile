@@ -3,7 +3,8 @@
 ARG BASE_TAG=bionic
 ARG USER=yoshwata
 
-FROM ${USER}/nvim:$BASE_TAG
+ARG FROM_IMG=nvim
+FROM ${USER}/${FROM_IMG}:$BASE_TAG
 
 USER ${USER}
 
