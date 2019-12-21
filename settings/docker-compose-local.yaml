@@ -43,11 +43,20 @@ services:
     command: tmux new
     volumes: *vol
     working_dir: /work
+  nodejs-base-local:
+    build:
+      context: ../images/nodejs-dev/base
+      args:
+        FROM_IMG: nvim-local
+    image: yoshwata/nodejs-base-local:bionic
+    command: tmux new
+    volumes: *vol
+    working_dir: /work
   nodejs-local:
     build:
       context: ../images/nodejs-dev/dubnium
       args:
-        FROM_IMG: nvim-local
+        FROM_IMG: nodejs-base-local
     image: yoshwata/nodejs-dev-10-local:bionic
     command: tmux new
     volumes: *vol
