@@ -29,7 +29,7 @@ ONBUILD RUN . ~/.nvm/nvm.sh && \
 	yarn global add flip-table javascript-typescript-langserver && \
 	yarn cache clean
 
-VOLUME $HOME/.npm
+# VOLUME $HOME/.npm
 
 VOLUME $HOME/.cache/yarn
 
