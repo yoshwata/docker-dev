@@ -6,26 +6,24 @@ services:
     build:
       context: ../images/ubuntu-dev-base/
       args:
-        USER: "yoshwata"
-        UID: 1000
-        GROUP: "users"
-        GID: 1000
+        USER: $USER
+        UID: $UID
+        GROUP: $GROUP
+        GID: $GID
     volumes: &vol
-      # work dir
-      - ~/:/work
-      # settings
-      - ./.tmux.conf:~/.tmux.conf
-      - ./.bash_history:~/.bash_history
-      - ./.bash_profile:~/.bash_profile
-      - ./.path:~/.path
-      - ./.bash_prompt:~/.bash_prompt
-      - ./.exports:~/.exports
-      - ./.aliases:~/.aliases
-      - ./.functions:~/.functions
-      - ./.gitconfig.sh:~/.gitconfig.sh
+      - /home/${USER}/:/work
+      - ./.tmux.conf:/home/${USER}/.tmux.conf
+      - ./.bash_history:/home/${USER}/.bash_history
+      - ./.bash_profile:/home/${USER}/.bash_profile
+      - ./.path:/home/${USER}/.path
+      - ./.bash_prompt:/home/${USER}/.bash_prompt
+      - ./.exports:/home/${USER}/.exports
+      - ./.aliases:/home/${USER}/.aliases
+      - ./.functions:/home/${USER}/.functions
+      - ./.gitconfig.sh:/home/${USER}/.gitconfig.sh
       # secret settings
-      - ./.extra:~/.extra
-      - ./.kube:~/.kube
+      - ./.extra:/home/${USER}/.extra
+      - ./.kube:/home/${USER}/.kube
     working_dir: /work
   power-tmux-local:
     build:
