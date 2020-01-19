@@ -10,5 +10,5 @@ echo "Starting with UID : $USER_ID"
 echo "Starting with GROUP : $GROUP"
 echo "Starting with GID : $GROUP_ID"
 sudo groupmod -g $GROUP_ID $GROUP
-sudo usermod -u $USER_ID -g $GROUP_ID -o yoshwata
+sudo usermod -u $USER_ID -g $GROUP_ID -o ${USER}
 
