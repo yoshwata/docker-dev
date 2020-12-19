@@ -11,7 +11,10 @@ services:
         GROUP: $GROUP
         GID: $GID
     volumes: &vol
-      - /home/${USER}/:/work
+      # linux
+      # - /home/${USER}/:/work
+      # mac
+      - /Users/${USER}/:/work
       - ./.tmux.conf:/home/${USER}/.tmux.conf
       - ./.bash_history:/home/${USER}/.bash_history
       - ./.bash_profile:/home/${USER}/.bash_profile
