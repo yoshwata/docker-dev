@@ -12,9 +12,9 @@ services:
         GID: $GID
     volumes: &vol
       # linux
-      # - /home/${USER}/:/work
+      # - /home/${USER}/git/:/home/${USER}/git
       # mac
-      - /Users/${USER}/:/work
+      - /Users/${USER}/git/:/home/${USER}/git
       - ./.tmux.conf:/home/${USER}/.tmux.conf
       - ./.bash_history:/home/${USER}/.bash_history
       - ./.bash_profile:/home/${USER}/.bash_profile
@@ -23,45 +23,42 @@ services:
       - ./.exports:/home/${USER}/.exports
       - ./.aliases:/home/${USER}/.aliases
       - ./.functions:/home/${USER}/.functions
+      - ./.ssh:/home/${USER}/.ssh
       - ./.gitconfig.sh:/home/${USER}/.gitconfig.sh
+      - /var/run/docker.sock:/var/run/docker.sock
       # secret settings
       - ./.extra:/home/${USER}/.extra
       - ./.kube:/home/${USER}/.kube
-    working_dir: /work
   power-tmux-local:
     build:
       context: ../images/power-tmux
       args:
         FROM_IMG: ubuntu-dev-base-local
     image: yoshwata/power-tmux-local:bionic
-    command: tmux new
+    command: tail -f /dev/null
     volumes: *vol
-    working_dir: /work
+    privileged: true
   nvim-local:
     build:
       context: ../images/nvim
       args:
         FROM_IMG: power-tmux-local
     image: yoshwata/nvim-local:bionic
-    command: tmux new
+    command: tail -f /dev/null
     volumes: *vol
-    working_dir: /work
   nodejs-base-local:
     build:
       context: ../images/nodejs-dev/base
       args:
         FROM_IMG: nvim-local
     image: yoshwata/nodejs-base-local:bionic
-    command: tmux new
+    command: tail -f /dev/null
     volumes: *vol
-    working_dir: /work
   nodejs-local:
     build:
       context: ../images/nodejs-dev/dubnium
       args:
         FROM_IMG: nodejs-base-local
     image: yoshwata/nodejs-dev-10-local:bionic
-    command: tmux new
+    command: tail -f /dev/null
     volumes: *vol
-    working_dir: /work
-
