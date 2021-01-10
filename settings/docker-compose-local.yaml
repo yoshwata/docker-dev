@@ -11,9 +11,10 @@ services:
         GROUP: $GROUP
         GID: $GID
     volumes: &vol
-      # linux
+      # mount your work dir
+      # for linux
       # - /home/${USER}/git/:/home/${USER}/git
-      # mac
+      # for mac
       - /Users/${USER}/git/:/home/${USER}/git
       - ./.tmux.conf:/home/${USER}/.tmux.conf
       - ./.bash_history:/home/${USER}/.bash_history
