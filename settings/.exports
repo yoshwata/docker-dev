@@ -4,9 +4,9 @@ export HISTTIMEFORMAT='%Y/%m/%d %H:%M:%S '
 export HISTCONTROL=erasedups
 
 # go
-# export PATH=$PATH:/usr/local/go/bin
-# export GOPATH=$HOME/go
-# export PATH=$PATH:$GOPATH/bin
+export GOENV_ROOT="$HOME/.anyenv/envs/goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
 
 # nvm
 # export NVM_DIR="$HOME/.nvm"
@@ -14,3 +14,8 @@ export HISTCONTROL=erasedups
 
 # kube
 export KUBE_EDITOR="vim"
+
+# node
+export PATH="$HOME/.anyenv/bin:$PATH"
+export PATH="/home/yoshwata/.anyenv/envs/nodenv/bin:$PATH"
+export PATH="/home/yoshwata/.anyenv/envs/nodenv/shims:$PATH"

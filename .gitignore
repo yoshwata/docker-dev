@@ -3,3 +3,5 @@
 /__pycache__
 /env
 /.vscode
+id_rsa*
+known_hosts
