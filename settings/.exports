@@ -14,3 +14,8 @@ export HISTCONTROL=erasedups
 
 # kube
 export KUBE_EDITOR="vim"
+
+# node
+export PATH="$HOME/.anyenv/bin:$PATH"
+export PATH="/home/yoshwata/.anyenv/envs/nodenv/bin:$PATH"
+export PATH="/home/yoshwata/.anyenv/envs/nodenv/shims:$PATH"

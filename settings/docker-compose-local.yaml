@@ -13,9 +13,9 @@ services:
     volumes: &vol
       # mount your work dir
       # for linux
-      # - /home/${USER}/git/:/home/${USER}/git
+      - /home/${USER}/git/:/home/${USER}/git
       # for mac
-      - /Users/${USER}/git/:/home/${USER}/git
+      # - /Users/${USER}/git/:/home/${USER}/git
       - ./.tmux.conf:/home/${USER}/.tmux.conf
       - ./.bash_history:/home/${USER}/.bash_history
       - ./.bash_profile:/home/${USER}/.bash_profile
@@ -45,6 +45,14 @@ services:
       args:
         FROM_IMG: power-tmux-local
     image: yoshwata/nvim-local:bionic
+    command: tail -f /dev/null
+    volumes: *vol
+  anyenv-local:
+    build:
+      context: ../images/anyenv-dev
+      args:
+        FROM_IMG: nvim-local
+    image: yoshwata/anyenv-local:bionic
     command: tail -f /dev/null
     volumes: *vol
   nodejs-base-local:
