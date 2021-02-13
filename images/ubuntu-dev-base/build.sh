@@ -22,7 +22,7 @@ dpkg -l | \
 apt-install tree curl
 
 # Going to need this a lot
-apt-install python3-pip
+apt-install python3-pip=3.9
 
 pip3 install setuptools
 
@@ -44,7 +44,8 @@ groupadd -g 999 docker
 user=$1
 usermod -aG docker $user
 
-pip3 install docker-compose
+# pip3 install docker-compose
+curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 
 # Add docker completion
 curl --create-dirs -L \

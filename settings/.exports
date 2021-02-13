@@ -3,6 +3,9 @@ export HISTSIZE=50000
 export HISTTIMEFORMAT='%Y/%m/%d %H:%M:%S '
 export HISTCONTROL=erasedups
 
+# powerline
+export XDG_CONFIG_HOME=/Users/yoshwata/git/githubcom/yoshwata/docker-dev/settings/.config
+
 # go
 export GOENV_ROOT="$HOME/.anyenv/envs/goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
