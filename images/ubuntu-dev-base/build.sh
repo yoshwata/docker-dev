@@ -22,7 +22,7 @@ dpkg -l | \
 apt-install tree curl
 
 # Going to need this a lot
-apt-install python3-pip=3.9
+apt-install python3-pip
 
 pip3 install setuptools
 
