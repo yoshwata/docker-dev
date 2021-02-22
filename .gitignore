@@ -5,5 +5,5 @@
 /.vscode
 id_rsa*
 known_hosts
-.ssh/config
+.ssh/
 .DS_Store
