@@ -12,5 +12,5 @@ nvim +PlugInstall +qall
 python3 "$HOME/.config/nvim/plugged/YouCompleteMe/install.py" "$@"
 
 sudo apt-get purge python3-dev cmake -y
-sudo apt-get install libpython3.9 -y
+sudo apt-get install libpython3 -y
 sudo apt-get install editorconfig -y

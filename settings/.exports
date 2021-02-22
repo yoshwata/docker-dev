@@ -2,7 +2,8 @@
 export HISTSIZE=50000
 export HISTTIMEFORMAT='%Y/%m/%d %H:%M:%S '
 export HISTCONTROL=erasedups
-export HISTFILE=/Users/yoshwata/git/githubcom/yoshwata/docker-dev/settings/.bash_history
+# mac
+# export HISTFILE=/Users/yoshwata/git/githubcom/yoshwata/docker-dev/settings/.bash_history
 
 # powerline
 export XDG_CONFIG_HOME=/Users/yoshwata/git/githubcom/yoshwata/docker-dev/settings/.config
