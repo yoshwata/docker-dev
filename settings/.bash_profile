@@ -1,7 +1,14 @@
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{path,bashrc,bash_prompt,exports,aliases,functions,gitconfig.sh,extra}; do
+
+# Enable to share settings/ dir to your local PC
+# setting_root="/Users/yoshwata/git/githubcom/yoshwata/docker-dev/settings/"
+
+# What you cannot share from setting_root
+# cp -r .config ${setting_root}
+
+for file in ${setting_root}.{path,bashrc,bash_prompt,exports,aliases,functions,gitconfig.sh,extra}; do
     echo "load $file"
 	# [ -r "$file" ] && [ -f "$file" ] && source "$file";
 	if [ -r "$file" ] && [ -f "$file" ]; then

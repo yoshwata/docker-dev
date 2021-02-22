@@ -44,7 +44,8 @@ groupadd -g 999 docker
 user=$1
 usermod -aG docker $user
 
-pip3 install docker-compose
+# install docker-compose
+curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 
 # Add docker completion
 curl --create-dirs -L \

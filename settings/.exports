@@ -2,6 +2,11 @@
 export HISTSIZE=50000
 export HISTTIMEFORMAT='%Y/%m/%d %H:%M:%S '
 export HISTCONTROL=erasedups
+# mac
+# export HISTFILE=/Users/yoshwata/git/githubcom/yoshwata/docker-dev/settings/.bash_history
+
+# powerline
+export XDG_CONFIG_HOME=/Users/yoshwata/git/githubcom/yoshwata/docker-dev/settings/.config
 
 # go
 export GOENV_ROOT="$HOME/.anyenv/envs/goenv"
@@ -14,6 +19,7 @@ eval "$(goenv init -)"
 
 # kube
 export KUBE_EDITOR="vim"
+export KUBECONFIG=/Users/yoshwata/git/githubcom/yoshwata/docker-dev/settings/.kube/config
 
 # node
 export PATH="$HOME/.anyenv/bin:$PATH"
