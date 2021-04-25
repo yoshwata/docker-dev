@@ -21,9 +21,14 @@ dpkg -l | \
 # Super essential tools
 apt-install tree curl
 
-# Going to need this a lot
-apt-install python3-pip
+apt install python3-pip -y
 
+# Going to need this a lot
+curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+
+# ssh
+apt-install openssh-client
 pip3 install setuptools
 
 # See readme for how to get the clipboard working.
@@ -44,7 +49,7 @@ groupadd -g 999 docker
 user=$1
 usermod -aG docker $user
 
-pip3 install docker-compose
+# pip3 install docker-compose
 
 # Add docker completion
 curl --create-dirs -L \
