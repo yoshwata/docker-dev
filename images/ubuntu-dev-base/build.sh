@@ -29,6 +29,7 @@ chmod +x /usr/local/bin/docker-compose
 
 # ssh
 apt-install openssh-client
+
 pip3 install setuptools
 
 # See readme for how to get the clipboard working.
@@ -93,9 +94,6 @@ apt-install strace
 
 # Install bash tab completion.
 apt-install bash-completion
-
-# ssh
-apt-install openssh-client
 
 # get lines of code in a directory
 apt-install cloc
