@@ -49,8 +49,6 @@ groupadd -g 999 docker
 user=$1
 usermod -aG docker $user
 
-# pip3 install docker-compose
-
 # Add docker completion
 curl --create-dirs -L \
 	-L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/bash/docker \
