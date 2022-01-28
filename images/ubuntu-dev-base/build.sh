@@ -21,8 +21,14 @@ dpkg -l | \
 # Super essential tools
 apt-install tree curl
 
+apt install python3-pip -y
+
 # Going to need this a lot
-apt-install python3-pip
+curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+
+# ssh
+apt-install openssh-client
 
 pip3 install setuptools
 
@@ -43,8 +49,6 @@ apt-get remove -y debsums
 groupadd -g 999 docker
 user=$1
 usermod -aG docker $user
-
-pip3 install docker-compose
 
 # Add docker completion
 curl --create-dirs -L \
@@ -90,9 +94,6 @@ apt-install strace
 
 # Install bash tab completion.
 apt-install bash-completion
-
-# ssh
-apt-install openssh-client
 
 # get lines of code in a directory
 apt-install cloc
