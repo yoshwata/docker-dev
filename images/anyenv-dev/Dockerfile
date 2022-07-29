@@ -8,7 +8,9 @@ USER ${USER}
 
 ENV NODENV_ROOT /home/yoshwata/.anyenv/envs/nodenv
 
-RUN git clone https://github.com/anyenv/anyenv ~/.anyenv && \
+RUN mkdir -p $HOME/.config/tmux && \
+    git clone https://github.com/jonmosco/kube-tmux.git ~/.config/tmux/kube-tmux && \
+    git clone https://github.com/anyenv/anyenv ~/.anyenv && \
     $HOME/.anyenv/bin/anyenv install --force-init && \
     mkdir -p $($HOME/.anyenv/bin/anyenv root)/plugins && \
     git clone https://github.com/znz/anyenv-update.git $($HOME/.anyenv/bin/anyenv root)/plugins/anyenv-update && \
@@ -21,8 +23,8 @@ RUN git clone https://github.com/anyenv/anyenv ~/.anyenv && \
     export GOENV_ROOT="$HOME/.anyenv/envs/goenv" && \
     export PATH="$GOENV_ROOT/bin:$PATH" && \
     eval "$(goenv init -)" && \
-    goenv install 1.17.6 && \
-    goenv local 1.17.6 && \
-    goenv global 1.17.6
+    goenv install 1.18.3 && \
+    goenv local 1.18.3 && \
+    goenv global 1.18.3
 
 CMD ["/bin/bash"]
