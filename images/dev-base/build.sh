@@ -6,6 +6,8 @@ set -eo pipefail
 # Print every line executed to the terminal.
 set -x
 
+user=$1
+
 apt-install() {
 	sudo apt-get install --no-install-recommends -y "$@"
 }
@@ -154,7 +156,7 @@ curl -L -o- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/insta
 # theme for zsh
 curl -L https://raw.githubusercontent.com/sbugzu/gruvbox-zsh/master/gruvbox.zsh-theme > ~/.oh-my-zsh/custom/themes/gruvbox.zsh-theme
 
-cp /tmp/zshrc /home/aghost-7/.zshrc
+cp /tmp/zshrc /home/${user}/.zshrc
 sudo rm /tmp/zshrc
 
 # cache is useless to keep

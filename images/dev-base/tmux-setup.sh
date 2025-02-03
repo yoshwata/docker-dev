@@ -6,6 +6,8 @@ set -x
 # If a command fails, exit immediately.
 set -e
 
+user=$1
+
 apt-install() {
 	sudo apt-get install --no-install-recommends -y "$@"
 }
@@ -18,7 +20,7 @@ install-tmux() {
 	# libevent is a run-time requirement. *-dev are for the header files.
 	apt-install libevent-2.1-7 libevent-dev libncurses-dev autoconf automake pkg-config bison
 	sh autogen.sh
-	./configure
+	./configure --enable-static 
 	make
 	sudo make install
 	popd
@@ -30,14 +32,19 @@ install-tmux() {
 sudo apt-get update
 
 # Fix file permissions from the copy
-sudo chown -R aghost-7:aghost-7 "$HOME/.config"
-sudo chown aghost-7:aghost-7 /home/aghost-7/.config/tmux/tmux.conf
+sudo chown -R ${user}:${user} "$HOME/.config"
+# sudo chown ${user}:${user} /home/${user}/.config/tmux/tmux.conf
 
 # Need to update package cache...
 sudo apt-get update
 
 install-tmux
 
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# ~/.tmux/plugins/tpm/tpm
+# ~/.tmux/plugins/tpm/bin/install_plugins
+
+ls -la .
 # Add fzf fuzzy finder
 git clone https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all

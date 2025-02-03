@@ -1,0 +1,92 @@
+version: '3'
+services:
+  dev-base-local:
+    # image: yoshwata/ubuntu-dev-base-local:bionic
+    command: tail -f /dev/null
+    build:
+      context: ../images/dev-base/
+      args:
+        USER: $USER
+        UID: $UID
+        GROUP: $GROUP
+        GID: $GID
+    volumes: &vol
+      # mount your work dir
+      # for linux
+      # - /home/${USER}/git/:/home/${USER}/git
+      # for mac
+      - /Users/${USER}/git/:/home/${USER}/git
+      - ./.tmux.conf:/home/${USER}/.tmux.conf
+      - ./.bash_history:/home/${USER}/.bash_history
+      - ./.bash_profile:/home/${USER}/.bash_profile
+      - ./.path:/home/${USER}/.path
+      - ./.bash_prompt:/home/${USER}/.bash_prompt
+      - ./.exports:/home/${USER}/.exports
+      - ./.aliases:/home/${USER}/.aliases
+      - ./.functions:/home/${USER}/.functions
+      - ./.ssh:/home/${USER}/.ssh
+      - ./.gitconfig.sh:/home/${USER}/.gitconfig.sh
+      - ./zshrc:/home/${USER}/.zshrc
+      # - /var/run/docker.sock:/var/run/docker.sock
+      # secret settings
+      - ./.extra:/home/${USER}/.extra
+      - ./.kube:/home/${USER}/.kube
+  # power-tmux-local:
+  #   build:
+  #     context: ../images/power-tmux
+  #     args:
+  #       FROM_IMG: ubuntu-dev-base-local
+  #   image: yoshwata/power-tmux-local:bionic
+  #   command: tail -f /dev/null
+  #   volumes: *vol
+  #   privileged: true
+  # nvim-local:
+  #   build:
+  #     context: ../images/nvim
+  #     args:
+  #       FROM_IMG: power-tmux-local
+  #   image: yoshwata/nvim-local:bionic
+  #   command: tail -f /dev/null
+  #   volumes: *vol
+  docker-in-docker:
+    image: docker:dind
+    environment:
+      DOCKER_TLS_CERTDIR: ""
+    privileged: true
+  # anyenv-local:
+  #   build:
+  #     context: ../images/anyenv-dev
+  #     args:
+  #       FROM_IMG: nvim-local
+  #   image: yoshwata/anyenv-local:bionic
+  #   command: tail -f /dev/null
+  #   volumes: *vol
+  #   depends_on:
+  #     - "docker-in-docker"
+  #   environment:
+  #     DOCKER_HOST: tcp://docker-in-docker:2375
+  #   hostname: dev02.yoshwata.centos76.ssk.ynwm.yahoo.co.jp
+  #   ports:
+  #     - "9100-9110:9100-9110"
+  # nodejs-base-local:
+  #   build:
+  #     context: ../images/nodejs-dev/base
+  #     args:
+  #       FROM_IMG: nvim-local
+  #   image: yoshwata/nodejs-base-local:bionic
+  #   command: tail -f /dev/null
+  #   volumes: *vol
+  # nodejs-local:
+  #   build:
+  #     context: ../images/nodejs-dev/dubnium
+  #     args:
+  #       FROM_IMG: nodejs-base-local
+  #   image: yoshwata/nodejs-dev-10-local:bionic
+  #   command: tail -f /dev/null
+  #   volumes: *vol
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 192.168.66.0/24
