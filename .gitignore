@@ -9,3 +9,4 @@ known_hosts
 settings/.ssh/config
 settings/.env
 .claude/
+.env
