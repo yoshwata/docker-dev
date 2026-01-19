@@ -21,14 +21,8 @@ sudo add-apt-repository ppa:neovim-ppa/stable
 sudo apt-get update
 apt-install neovim -y
 
-# Install neovim python api.
-sudo pip3 install neovim
-
-# Python 3 api required for denite.vim
-apt-install python3-pip
-sudo pip3 install --upgrade pip
-sudo pip3 install setuptools
-sudo pip3 install neovim
+# Install neovim python api via apt
+apt-install python3-pip python3-setuptools python3-neovim
 
 # Add environment variables and `vim` alias.
 cat /tmp/bashrc-additions.sh >> "$HOME/.bashrc"

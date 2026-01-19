@@ -1,4 +1,4 @@
-ARG BASE_TAG=bionic
+ARG BASE_TAG=noble
 ARG USER=yoshwata
 ARG FROM_IMG=ubuntu-dev-base
 
@@ -7,6 +7,7 @@ FROM ${USER}/${FROM_IMG}:$BASE_TAG
 
 USER ${USER}
 
+ENV UBUNTU_RELEASE=${BASE_TAG}
 ENV XDG_CONFIG_HOME "$HOME/.config"
 
 COPY ./powerline "$HOME/.config/powerline"

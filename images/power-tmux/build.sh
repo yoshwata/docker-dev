@@ -19,10 +19,14 @@ install-tmux() {
 	local tmux_src="/tmp/tmux-$TMUX_VERSION"
 	pushd "$tmux_src"
 	# libevent is a run-time requirement. *-dev are for the header files.
-	local libevent_version=2.0-5
-	if [ "$UBUNTU_RELEASE" == "bionic" ]; then
+	# Detect Ubuntu version and set appropriate libevent version
+	local libevent_version=2.1-7t64  # Default to Noble/latest
+	if grep -q "18.04" /etc/os-release 2>/dev/null || [ "$UBUNTU_RELEASE" == "bionic" ]; then
 		libevent_version=2.1-6
+	elif grep -q "20.04\|22.04\|24.04" /etc/os-release 2>/dev/null; then
+		libevent_version=2.1-7t64
 	fi
+	echo "Using libevent version: $libevent_version"
 	apt-install "libevent-$libevent_version" libevent-dev libncurses-dev
 	./configure
 	make
@@ -35,11 +39,14 @@ install-tmux() {
 }
 
 install-powerline() {
-	# POWER TMUX
-	sudo pip3 install powerline-status
+	# POWER TMUX - Install via apt
+	apt-install python3-powerline powerline
 
-	# Make git status extra nice :)
-	sudo pip3 install powerline-gitstatus
+	# powerline-gitstatus is not in apt, so we'll use a system venv for it
+	sudo python3 -m venv /opt/powerline-venv
+	sudo /opt/powerline-venv/bin/pip install powerline-gitstatus
+	# Link the package to system python path
+	sudo ln -sf /opt/powerline-venv/lib/python3.*/site-packages/powerline_gitstatus /usr/lib/python3/dist-packages/ || true
 }
 
 install-tmate() {

@@ -1,6 +1,6 @@
 # vim: set ft=dockerfile
 
-ARG BASE_TAG=bionic
+ARG BASE_TAG=noble
 ARG USER=yoshwata
 
 ARG FROM_IMG=nvim

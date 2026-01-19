@@ -1,4 +1,4 @@
-ARG BASE_TAG=bionic
+ARG BASE_TAG=noble
 ARG USER=yoshwata
 
 ARG FROM_IMG=nodejs-dev-base

@@ -12,7 +12,10 @@ sudo apt-get install -y kubectl
 # }}}
 
 # {{{ ansible
-sudo pip3 install ansible ansible-lint
+# Install ansible and ansible-lint via pipx (CLI tools)
+sudo apt-get install -y pipx
+sudo pipx install --global ansible
+sudo pipx install --global ansible-lint
 # }}}
 
 # {{{  terraform

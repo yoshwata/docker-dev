@@ -1,7 +1,7 @@
 version: '3'
 services:
   ubuntu-dev-base-local:
-    image: yoshwata/ubuntu-dev-base-local:bionic
+    image: yoshwata/ubuntu-dev-base-local:noble
     command: /bin/bash
     build:
       context: ../images/ubuntu-dev-base/
@@ -35,7 +35,7 @@ services:
       context: ../images/power-tmux
       args:
         FROM_IMG: ubuntu-dev-base-local
-    image: yoshwata/power-tmux-local:bionic
+    image: yoshwata/power-tmux-local:noble
     command: tail -f /dev/null
     volumes: *vol
     privileged: true
@@ -44,7 +44,7 @@ services:
       context: ../images/nvim
       args:
         FROM_IMG: power-tmux-local
-    image: yoshwata/nvim-local:bionic
+    image: yoshwata/nvim-local:noble
     command: tail -f /dev/null
     volumes: *vol
   docker-in-docker:
@@ -57,7 +57,7 @@ services:
       context: ../images/anyenv-dev
       args:
         FROM_IMG: nvim-local
-    image: yoshwata/anyenv-local:bionic
+    image: yoshwata/anyenv-local:noble
     command: tail -f /dev/null
     volumes: *vol
     depends_on:
@@ -72,7 +72,7 @@ services:
       context: ../images/nodejs-dev/base
       args:
         FROM_IMG: nvim-local
-    image: yoshwata/nodejs-base-local:bionic
+    image: yoshwata/nodejs-base-local:noble
     command: tail -f /dev/null
     volumes: *vol
   nodejs-local:
@@ -80,7 +80,7 @@ services:
       context: ../images/nodejs-dev/dubnium
       args:
         FROM_IMG: nodejs-base-local
-    image: yoshwata/nodejs-dev-10-local:bionic
+    image: yoshwata/nodejs-dev-10-local:noble
     command: tail -f /dev/null
     volumes: *vol
 

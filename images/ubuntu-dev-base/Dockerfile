@@ -1,4 +1,4 @@
-ARG UBUNTU_RELEASE=bionic
+ARG UBUNTU_RELEASE=noble
 
 FROM ubuntu:${UBUNTU_RELEASE}
 
@@ -10,7 +10,7 @@ ENV UBUNTU_RELEASE=${UBUNTU_RELEASE}
 #  TODO: user name should be customisable?
 RUN echo $USER && \
 	apt-get update && \
-	apt-get install sudo -y && \
+	apt-get install sudo adduser -y && \
 	adduser --disabled-password --gecos '' ${USER} && \
 	adduser ${USER} sudo && \
 	echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \

@@ -21,7 +21,10 @@ dpkg -l | \
 # Super essential tools
 apt-install tree curl
 
-apt install python3-pip -y
+apt install python3-pip python3-venv pipx -y
+
+# Ensure pipx is set up
+pipx ensurepath
 
 # Going to need this a lot
 curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -30,7 +33,8 @@ chmod +x /usr/local/bin/docker-compose
 # ssh
 apt-install openssh-client
 
-pip3 install setuptools
+# Install setuptools via apt
+apt-install python3-setuptools
 
 # See readme for how to get the clipboard working.
 apt-install xclip
@@ -69,10 +73,10 @@ sudo mv ./kubectl /usr/local/bin/kubectl
 apt-install man-db
 
 # tldr for a short form man pages.
-pip3 install tldr
+pipx install tldr
 
 # Just gitgud
-pip3 install gitgud
+pipx install gitgud
 
 # System info. Nethogs has a bug on trusty so just going to use iftop.
 apt-install htop iotop iftop
@@ -118,19 +122,15 @@ apt-install iproute2
 
 # Expose local servers to the internet. Useful for testing webhooks, oauth,
 # etc.
-curl -o /tmp/ngrok.zip \
-	https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
-apt-install unzip
-sudo unzip /tmp/ngrok.zip -d /usr/local/bin
-rm /tmp/ngrok.zip
-apt-get purge -y unzip
+# Using official ngrok download URL
+# curl -o /tmp/ngrok.tgz \
+# 	https://bin.ngrok.com/ngrok-v3-stable-linux-arm64.tgz
+# tar -xvzf /tmp/ngrok.tgz -C /usr/local/bin
+# rm /tmp/ngrok.tgz
 
-# Install latest git
-apt-install software-properties-common
-sudo apt-add-repository ppa:git-core/ppa
-sudo apt-get update
+# Install git from standard repository
+# Note: PPA git-core/ppa no longer works reliably with Ubuntu Bionic
 apt-install git
-sudo apt-get purge -y software-properties-common
 
 # subcommand which opens the branch you're checked out on github.
 git clone --depth 1 https://github.com/paulirish/git-open /tmp/git-open
